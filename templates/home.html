@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <script>
+        $('.carousel').carousel({
+              interval: 2000
+            })
+            </script>
+    </head>
+{% endblock %}
+
+{% block content %}
+        <div class = 'row'>
+                <div id="myCarousel" class="carousel slide">
+                  <!-- Carousel items -->
+                  <div class="carousel-inner">
+                    <div class="active item">
+                        <img src="/static/img/1.png" alt="">
+                        <div class="carousel-caption">
+                          <h5>www.elcomtrading.com</h5>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/static/img/2.png" alt="">
+                        <div class="carousel-caption">
+                          <h5>www.quatrogifts.ru</h5>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/static/img/3.png" alt="">
+                        <div class="carousel-caption">
+                          <h5>&nbsp;</h5>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/static/img/4.png" alt="">
+                        <div class="carousel-caption">
+                          <h5>www.dragon-el.com</h5>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/static/img/5.png" alt="">
+                        <div class="carousel-caption">
+                          <h5>www.dieks.ru</h5>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/static/img/6.png" alt="">
+                        <div class="carousel-caption">
+                          <h5>&nbsp;</h5>
+                        </div>
+                    </div>
+                  </div>
+                  <!-- Carousel nav -->
+                  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                </div>
+        </div>
+
+        {{ content|safe }}
+{% endblock %}

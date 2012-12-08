@@ -1,0 +1,13 @@
+uwsgi:
+    socket: /var/tmp/webgenesis_uwsgi.sock
+    pythonpath: /var/www/ann/data/webgenesis
+    env: DJANGO_SETTINGS_MODULE=settings
+    module: wsgi
+    daemonize: /var/www/ann/data/webgenesis/logs/uwsgi.log
+    max-requests: 5000
+    buffer-size: 32768
+    harakiri: 30
+    reload-mercy: 8
+    master: 1
+    no-orphans: 1
+    touch-reload: /var/www/ann/data/webgenesis/uwsgi
