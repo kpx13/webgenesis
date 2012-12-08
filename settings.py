@@ -170,3 +170,8 @@ EMAIL_HOST_USER = 'noreply@webgenesis.ru'
 EMAIL_HOST_PASSWORD = 'noreply13'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
