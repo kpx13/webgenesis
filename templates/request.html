@@ -9,7 +9,7 @@
 {% block content %}
     <div class='row'>
 	<div class='span6'>
-		<form method='post'>
+		<form method='post' enctype="multipart/form-data">
 			<table class="request">
 				{{ request_form.as_table }}
 				<tr><td></td><td><button>Отправить</button></td></tr>

@@ -172,6 +172,8 @@ EMAIL_HOST_PASSWORD = 'noreply13'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
+ROOT_FOR_ATTACES = MEDIA_ROOT + '/briefs/'
+
 REQUEST_TO = ['ann@webgenesis.ru']
 
 try:

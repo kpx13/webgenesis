@@ -3,18 +3,15 @@
 from django.conf import settings
 from django.contrib import messages
 from django.core.context_processors import csrf
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+import pytils
 
 from request.forms import RequestForm
 from pages.models import Page
 from portfolio.models import Category, Work
-
-def send_mail_to_admin(data):
-    text= u'Имя: ' + data['name'] + u"\n" + u'email: ' + data['email'] + '\n' + u'Телефон: ' + data['phone'] + '\n' + u'Текст: ' + data['comment'] + '\n'
-    send_mail('Новое сообщение с сайта', text , 'noreply@webgenesis.ru', settings.REQUEST_TO, fail_silently=False)
 
 def get_common_context(request):
     c = {}
@@ -47,9 +44,15 @@ def order_page(request):
     else:
         form = RequestForm(request.POST)
         if form.is_valid():
-            send_mail_to_admin(form.cleaned_data)
             form.save()
-            form = RequestForm()
+            data = form.cleaned_data
+            message= u'Имя: ' + data['name'] + u"\n" + u'email: ' + data['email'] + '\n' + u'Телефон: ' + data['phone'] + '\n' + u'Текст: ' + data['comment'] + '\n'
+            
+            email = EmailMessage(u'Новое сообщение с сайта', message, settings.EMAIL_HOST_USER, [settings.REQUEST_TO])
+            file = request.FILES.get('brief')
+            if file: email.attach_file(handle_file(file))
+            email.send()
+
             messages.success(request, u'Ваш запрос отправлен.')
             return HttpResponseRedirect('/')
         else:
@@ -65,3 +68,11 @@ def other_page(request, page_name):
         return render_to_response('page.html', c, context_instance=RequestContext(request))
     except:
         raise Http404
+    
+def handle_file(f):
+    filename = settings.ROOT_FOR_ATTACES + pytils.translit.translify(f.name)
+    destination = open(filename, 'wb+')
+    for chunk in f.chunks():
+        destination.write(chunk)
+    destination.close()
+    return filename
