@@ -134,7 +134,8 @@ INSTALLED_APPS = (
     'ckeditor',
     
     'pages',
-    'request'
+    'request',
+    'portfolio'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -170,6 +171,8 @@ EMAIL_HOST_USER = 'noreply@webgenesis.ru'
 EMAIL_HOST_PASSWORD = 'noreply13'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
+
+REQUEST_TO = ['ann@webgenesis.ru']
 
 try:
     from local_settings import *

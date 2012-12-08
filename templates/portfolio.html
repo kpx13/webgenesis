@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Создание и продвижение сайтов на заказ | Портфолио{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+    <div class = 'row'>
+        <div class='span8'>
+            <div>
+                <h3>{{ curr_work.title }}, <span><a href='http://{{ curr_work.href }}/' target='blank'>{{ curr_work.href }}</a></span></h3>
+                <img src='/media/{{ curr_work.image }}' alt='{{ curr_work.title }}' style='width: 100%'/>
+                <p>{{ curr_work.desc }} </p>
+                
+            </div>
+            <ul class="pager">
+                {% if curr_work.prev %}
+                <li class="previous">
+                    <a href="/portfolio/{{ curr_cat.slug }}/{{ curr_work.prev.slug }}">&larr; Предыдущая работа</a>
+                </li>
+                {% endif %}
+                {% if curr_work.next %}
+                    <li class="next">
+                        <a href="/portfolio/{{ curr_cat.slug }}/{{ curr_work.next.slug }}">Следующая работа &rarr;</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+        
+        <div class='span4'>
+            <div class='well'>
+                <h4>Категории</h4>
+                <ul>
+                {% for c in categories %}
+                    <li><a href='/portfolio/{{ c.slug }}'>{{ c.title }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class='well'>
+                <h4>{{ curr_cat }}</h4>
+                <p>{{ curr_cat.desc }}</p>
+            </div>
+            <div class='well'>
+                <h4>Другие работы из этой категории</h4>
+                <ul>
+                {% for w in curr_cat.work_set.all %}
+                    <li><a href='/portfolio/{{ curr_cat.slug }}/{{ w.slug }}'>{{ w.title }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
