@@ -47,8 +47,8 @@ def order_page(request):
             form.save()
             data = form.cleaned_data
             message= u'Имя: ' + data['name'] + u"\n" + u'email: ' + data['email'] + '\n' + u'Телефон: ' + data['phone'] + '\n' + u'Текст: ' + data['comment'] + '\n'
-            
-            email = EmailMessage(u'Новое сообщение с сайта', message, settings.EMAIL_HOST_USER, [settings.REQUEST_TO])
+        
+            email = EmailMessage(u'Новое сообщение с сайта', message, settings.EMAIL_HOST_USER, settings.REQUEST_TO)
             file = request.FILES.get('brief')
             if file: email.attach_file(handle_file(file))
             email.send()
