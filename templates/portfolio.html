@@ -9,7 +9,7 @@
     <div class = 'row'>
         <div class='span8'>
             <div>
-                <h3>{{ curr_work.title }}, <span><a href='http://{{ curr_work.href }}/' target='blank'>{{ curr_work.href }}</a></span></h3>
+                <h3>{{ curr_work.title }}{% if curr_work.href %}, {% endif %}<span><a href='http://{{ curr_work.href }}/' target='blank'>{{ curr_work.href }}</a></span></h3>
                 <img src='/media/{{ curr_work.image }}' alt='{{ curr_work.title }}' style='width: 100%'/>
                 <p>{{ curr_work.desc }} </p>
                 

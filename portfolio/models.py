@@ -39,13 +39,15 @@ class Work(models.Model):
     category = models.ForeignKey(Category, verbose_name=u'категория')
     slug = models.SlugField(verbose_name=u'slug', unique=True, blank=True)
     title = models.CharField(max_length=256, verbose_name=u'заголовок')
-    href = models.CharField(max_length=256, verbose_name=u'ссылка')
-    image = models.FileField(upload_to= 'portfolio', max_length=256, verbose_name=u'картинка')
+    href = models.CharField(max_length=256, blank=True, verbose_name=u'ссылка')
+    image = models.FileField(upload_to= 'portfolio', blank=True, max_length=256, verbose_name=u'картинка')
     desc = models.TextField(blank=True, verbose_name=u'описание')
+    order = models.SmallIntegerField(blank=True, default=0, verbose_name=u'порядок')
     
     class Meta:
         verbose_name = u'работа'
         verbose_name_plural = u'работы'
+        ordering = ['-order']
         
     def __unicode__(self):
         return self.title
