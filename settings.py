@@ -174,7 +174,7 @@ EMAIL_PORT = 587
 
 ROOT_FOR_ATTACES = MEDIA_ROOT + '/briefs/'
 
-REQUEST_TO = ['ann@webgenesis.ru']
+REQUEST_TO = ['ann@webgenesis.ru', 'laimis@webgenesis.ru']
 
 try:
     from local_settings import *
