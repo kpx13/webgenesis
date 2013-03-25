@@ -23,6 +23,7 @@ def home_page(request):
     c = get_common_context(request)
     c['request_url'] = 'home'
     c['works'] = Work.objects.all()
+    c['content_top'] = Page.get_page_by_slug('home_top')['content']
     c['content'] = Page.get_page_by_slug('home')['content']
     return render_to_response('home.html', c, context_instance=RequestContext(request))
 
