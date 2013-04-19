@@ -1,0 +1,7 @@
+Pillow
+sorl-thumbnail
+django-ckeditor==4.0.2
+django-filebrowser==3.5.1
+django-admin-tools
+pytils
+django-taggit

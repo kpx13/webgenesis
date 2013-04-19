@@ -1,11 +1,7 @@
 {% extends 'base.html' %}
 
-{% block title %}Создание и продвижение сайтов на заказ | {{ title }}{% endblock %}
-
-{% block head %}
-    {{ header_content|safe }}
-{% endblock %}
+{% block title %}Создание и продвижение сайтов на заказ | {{ page.title }}{% endblock %}
 
 {% block content %}
-        {{ content|safe }}
+        {{ page.content|safe }}
 {% endblock %}

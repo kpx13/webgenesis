@@ -1,35 +1,102 @@
 {% extends 'base.html' %}
 
-{% block head %}
-    <script>
-        $('.carousel').carousel({
-              interval: 2000
-            })
-            </script>
-    </head>
-{% endblock %}
-
-{% block content %}
-	{{ content_top|safe }}
-
-        <div class = 'row'>
-                <div id="myCarousel" class="carousel slide">
-                  <!-- Carousel items -->
-                  <div class="carousel-inner">
-                    {% for w in works %}
-                        <div class="item {% if forloop.counter = 4 %} active {% endif %}">
-                            <img src="/media/{{ w.image }}" alt="">
-                            <div class="carousel-caption">
-                            <h5>{{ w.title }}, {{ w.href }}</h5>
+{% block slider %}
+    <section id="intro">
+        <div class="jumbotron masthead">
+            <div class="container">
+                <!-- slider navigation -->
+                <div class="sequence-nav">
+                    <div class="prev">
+                        <span></span>
+                    </div>
+                    <div class="next">
+                        <span></span>
+                    </div>
+                </div>
+                <!-- end slider navigation -->
+                <div class="row">
+                    <div class="span12">
+                        <div id="slider_holder">
+                            <div id="sequence">
+                                <ul>
+                                    {% for s in slideshow %}
+                                    <li>
+                                        <div class="info animate-in">
+                                            <h2>{{ s.title }}</h2>
+                                            <br>
+                                            <h3>{{ s.subtitle }}</h3>
+                                            <p>{{ s.description }}</p>
+                                            {{ s.link|safe }}
+                                            
+                                        </div>
+                                        <img class="slider_img animate-in" src="/media/{{ s.image }}" alt="" />
+                                    </li>
+                                   {% endfor %}
+                                </ul>
                             </div>
                         </div>
-                    {% endfor %}
-                  </div>
-                  <!-- Carousel nav -->
-                  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                        <!-- Sequence Slider::END-->
+                    </div>
                 </div>
+            </div>
         </div>
+    </section>
+{% endblock %}
 
-        {{ content|safe }}
+
+{% block content %}
+        {{ page.content|safe }}
+        
+        
+        <div class="row">
+            <div class="home-posts">
+                <div class="span12">
+                    <h3>Последние работы</h3>
+                </div>
+                {% for w in works %}
+                <div class="span3">
+                    <div class="post-image">
+                        <a href="/portfolio/{{ w.slug }}">
+                        <img src="/media/{{ w.image }}" alt="" />
+                        </a>
+                    </div>
+                    <!-- end .entry-meta -->
+                    <div>
+                        <a href="/portfolio/{{ w.slug }}">
+                        <h5 class="title">{{ w.title }}</h5>
+                        </a>
+                        <p>{{ w.desc }}</p>
+                        <a href='http://{{ w.href }}/' target='_blank'> Перейти на сайт {{ w.href }} &raquo;</a><br />
+                        <a href='/portfolio/{{ w.slug }}' class='btn btn-color btn-small'>Подробнее &raquo;</a>
+                    </div>
+                    <!-- end .entry-body -->
+                    <div class="clear">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="home-posts">
+                <div class="span12">
+                    <h3>Последние статьи</h3>
+                </div>
+                {% for a in articles %}
+                <div class="span3">
+                    <div class="well">
+                    <div class="centered">
+                        <a href="/articles/{{ a.slug }}">
+                        <h5 class="title">{{ a.name }}</h5>
+                        </a>
+                        <p>{{ a.desc }}</p>
+                        {% for t in a.tags.all %} <span class="label"> {{t}} </span> {% endfor %}<br />
+                        <a href='/article/{{ a.slug }}' class='btn btn-link'>Подробнее &raquo;</a>
+                    </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
 {% endblock %}
