@@ -32,8 +32,12 @@ def home_page(request):
 
 def portfolio_page(request, curr_work=None):
     c = get_common_context(request)
-    c['curr_work'] = Work.get_by_slug(curr_work)
-    return render_to_response('portfolio.html', c, context_instance=RequestContext(request))
+    if curr_work:
+        c['curr_work'] = Work.get_by_slug(curr_work)
+        return render_to_response('portfolio_work.html', c, context_instance=RequestContext(request))
+    else:
+        c['works'] = Work.get_recent(4)
+        return render_to_response('portfolio.html', c, context_instance=RequestContext(request))
 
 def articles_page(request, curr_work=None):
     c = get_common_context(request)
