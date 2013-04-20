@@ -11,8 +11,8 @@
                 <div class="row">
                     <div class="span12">
                         <ul class="breadcrumb notop">
-                            <li><a href="#">Home</a><span class="divider">/</span></li>
-                            <li class="active">Blog right sidebar</li>
+                            <li><a href="/">Главная</a><span class="divider">/</span></li>
+                            <li class="active">Статьи</li>
                         </ul>
                     </div>
                 </div>
@@ -23,100 +23,34 @@
 {% block content %}
     <div class="row">
         <div class="span8">
-            <!-- start article 1 -->
+            {% for a in articles %}
             <article class="blog-post">
-            <div class="post-heading">
-                <h3><a href="#">Example article with thumbnail image</a></h3>
-            </div>
-            <div class="row">
-                <div class="span3">
-                    <div class="post-image">
-                        <a href="#"><img src="/static/img/dummies/blog1.jpg" alt="" /></a>
+                <div class="post-heading">
+                    <h3><a href="#">{{ a.name }}</a></h3>
+                </div>
+                <div class="row">
+                    <div class="span3">
+                        <div class="post-image">
+                            <a href='/articles/{{ a.slug }}'><img src="/static/img/dummies/blog1.jpg" alt="" /></a>
+                        </div>
+                    </div>
+                    <div class="span5">
+                        <ul class="post-meta">
+                            <li class="first"><i class="icon-calendar"></i><span>{{ a.date }}</span></li>
+                            <li><i class="icon-list-alt"></i><span><a href="#">3 comments</a></span></li>
+                            <li class="last"><i class="icon-tags"></i> <span>
+                                {% for t in a.tags.all %} <a href="/articles/tag/{{ t.id }}">{{t}}</a>{% if not forloop.last %}, {% endif %}  {% endfor %}
+                            </span></li>
+                        </ul>
+                        <div class="clearfix">
+                        </div>
+                        <p>{{ a.desc }}</p>
+                        <a href='/articles/{{ a.slug }}' class="btn btn-small btn-success" type="button">Подробнее &raquo;</a>
                     </div>
                 </div>
-                <div class="span5">
-                    <ul class="post-meta">
-                        <li class="first"><i class="icon-calendar"></i><span>March 03, 2013</span></li>
-                        <li><i class="icon-list-alt"></i><span><a href="#">3 comments</a></span></li>
-                        <li class="last"><i class="icon-tags"></i><span><a href="#">Design</a>, <a href="#">Blog</a>, <a href="#">Tutorial</a></span></li>
-                    </ul>
-                    <div class="clearfix">
-                    </div>
-                    <p>
-                         Ei eos suavitate forensibus mnesarchum. Eu est timeam vocibus, an nostro aliquam adipiscing quo. Zril equidem et quo, ad albucius scripserit sit. Vis constituto deseruisse an, interesset reprehendunt et mel, gloriatur concludaturque pro no. At ludus mediocritatem qui, no vituperata assueverit accommodare his.
-                    </p>
-                    <button class="btn btn-small btn-success" type="button">Read more</button>
-                </div>
-            </div>
             </article>
-            <!-- end article 1 -->
-            <!-- start article 2 -->
-            <article class="blog-post">
-            <div class="post-heading">
-                <h3><a href="#">This post uses nice video post format</a></h3>
-            </div>
-            <div class="row">
-                <div class="span3">
-                    <div class="video-container">
-                        <iframe src="http://player.vimeo.com/video/30585464?title=0&amp;byline=0">
-                        </iframe>
-                    </div>
-                </div>
-                <div class="span5">
-                    <ul class="post-meta">
-                        <li class="first"><i class="icon-user"></i><span>March 03, 2013</span></li>
-                        <li><i class="icon-list-alt"></i><span><a href="#">3 comments</a></span></li>
-                        <li class="last"><i class="icon-tags"></i><span><a href="#">Design</a>, <a href="#">Blog</a>, <a href="#">Tutorial</a></span></li>
-                    </ul>
-                    <div class="clearfix">
-                    </div>
-                    <p>
-                         Ei eos suavitate forensibus mnesarchum. Eu est timeam vocibus, an nostro aliquam adipiscing quo. Zril equidem et quo, ad albucius scripserit sit. Vis constituto deseruisse an, interesset reprehendunt et mel, gloriatur concludaturque pro no. At ludus mediocritatem qui, no vituperata assueverit accommodare his.
-                    </p>
-                    <button class="btn btn-small btn-success" type="button">Read more</button>
-                </div>
-            </div>
-            </article>
-            <!-- end article 2 -->
-            <!-- start article 3 -->
-            <article class="blog-post">
-            <div class="post-heading">
-                <h3><a href="#">Great blog post with quote post format</a></h3>
-            </div>
-            <div class="row">
-                <div class="span3">
-                    <div class="post-quote">
-                        <blockquote>
-                            Lorem ipsum dolor sit amet, vidit postea ex nec, tantas eruditi conceptam eu vim
-                        </blockquote>
-                    </div>
-                </div>
-                <div class="span5">
-                    <ul class="post-meta">
-                        <li class="first"><i class="icon-user"></i><span>March 03, 2013</span></li>
-                        <li><i class="icon-list-alt"></i><span><a href="#">3 comments</a></span></li>
-                        <li class="last"><i class="icon-tags"></i><span><a href="#">Design</a>, <a href="#">Blog</a>, <a href="#">Tutorial</a></span></li>
-                    </ul>
-                    <div class="clearfix">
-                    </div>
-                    <p>
-                         Ei eos suavitate forensibus mnesarchum. Eu est timeam vocibus, an nostro aliquam adipiscing quo. Zril equidem et quo, ad albucius scripserit sit. Vis constituto deseruisse an, interesset reprehendunt et mel, gloriatur concludaturque pro no. At ludus mediocritatem qui, no vituperata assueverit accommodare his.
-                    </p>
-                    <button class="btn btn-small btn-success" type="button">Read more</button>
-                </div>
-            </div>
-            </article>
-            <!-- end article 3 -->
-            <div class="pagination">
-                <ul>
-                    <li><a href="#">Prev</a></li>
-                    <li><a href="#">1</a></li>
-                    <li class="active"><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-            </div>
+            {% endfor %}
+            
         </div>
         <div class="span4">
             <aside>

@@ -36,15 +36,16 @@ def portfolio_page(request, curr_work=None):
         c['curr_work'] = Work.get_by_slug(curr_work)
         return render_to_response('portfolio_work.html', c, context_instance=RequestContext(request))
     else:
-        c['works'] = Work.get_recent(4)
+        c['works'] = Work.objects.all()
         return render_to_response('portfolio.html', c, context_instance=RequestContext(request))
 
 def articles_page(request, curr_work=None):
     c = get_common_context(request)
     if curr_work:
-        c['curr_work'] = Article.get_by_slug(curr_work)
+        c['curr_article'] = Article.get_by_slug(curr_work)
         return render_to_response('article.html', c, context_instance=RequestContext(request))
     else:
+        c['articles'] = Article.objects.all()
         return render_to_response('articles.html', c, context_instance=RequestContext(request))
 
 def order_page(request):

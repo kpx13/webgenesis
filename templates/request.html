@@ -4,16 +4,23 @@
 
 {% block content %}
     <div class='row'>
-	<div class='span6'>
-		<form method='post' enctype="multipart/form-data">
-			<table class="request">
-				{{ request_form.as_table }}
-				<tr><td></td><td><button>Отправить</button></td></tr>
-			</table>
-			{% csrf_token %}
-		</form>
-	</div>
-	
-	{{ page.content|safe }}
+        <div class='span6'>
+            <aside>
+                <div class="widget">
+                    <h4>Отправьте нам заявку</h4>
+                    <form method='post' enctype="multipart/form-data">
+                        <table class="request">
+                            {{ request_form.as_table }}
+                            <tr><td></td><td><button>Отправить</button></td></tr>
+                        </table>
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </aside>
+        </div>
+        
+        <div class='span6'>
+            {{ page.content|safe }}
+        </div>
     </div>
 {% endblock %}
