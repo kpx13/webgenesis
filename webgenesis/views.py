@@ -83,6 +83,10 @@ def other_page(request, page_name):
 def contacts_page(request):
     c = get_common_context(request)
     return render_to_response('contacts.html', c, context_instance=RequestContext(request))
+
+def umi_page(request):
+    c = get_common_context(request)
+    return render_to_response('umi.html', c, context_instance=RequestContext(request))
     
 def handle_file(f):
     filename = settings.ROOT_FOR_ATTACES + pytils.translit.translify(f.name)

@@ -21,6 +21,7 @@ urlpatterns = patterns('',
 
     url(r'^$' , views.home_page),
     url(r'^order/$' , views.order_page),
+    url(r'^umi/$' , views.umi_page),
     url(r'^contacts/$' , views.contacts_page),
     url(r'^portfolio/$' , views.portfolio_page),
     url(r'^articles/$' , views.articles_page),
