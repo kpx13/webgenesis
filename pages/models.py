@@ -7,7 +7,7 @@ class Page(models.Model):
     title = models.CharField(max_length=256, verbose_name=u'заголовок')
     subintro_title = models.CharField(max_length=256, blank=True, verbose_name=u'заголовок в subintro')
     subintro_text = models.CharField(max_length=512, blank=True, verbose_name=u'текст в subintro')
-    content = RichTextField(blank=True, verbose_name=u'контент')
+    content = models.TextField(blank=True, verbose_name=u'контент')
     slug = models.SlugField(verbose_name=u'слаг', unique=True, blank=True, help_text=u'Заполнять не нужно')
     
     def save(self, *args, **kwargs):
