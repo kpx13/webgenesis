@@ -70,9 +70,11 @@
                                 <li class="dropdown {% if 'portfolio' in request_url %} active {% endif %}">
                                     <a href="/portfolio/">Портфолио</a>
                                 </li>
+                                {% comment %}
                                 <li class="dropdown {% if 'articles' in request_url %} active {% endif %}">
                                     <a href="/articles/">Статьи</a>
                                 </li>
+                                {% endcomment %}
                                 <li class="dropdown {% if 'order' in request_url %} active {% endif %}">
                                     <a href="/order/">Заказ</a>
                                 </li>
@@ -140,22 +142,13 @@
                                 <li><a href="/">Главная</a></li>
                                 <li><a href="/services/">Услуги</a></li>
                                 <li><a href="/portfolio/">Портфолио</a></li>
-                                <li><a href="/articles/">Статьи</a></li>
+                                {% comment %}<li><a href="/articles/">Статьи</a></li>{% endcomment %}
                                 <li><a href="/order/">Заказ</a></li>
                                 <li><a href="/about/">О компании и контакты</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="span3">
-                        <div class="widget">
-                            <h5>Последние статьи</h5>
-                            <ul class="regular">
-                                {% for a in articles %}
-                                    <li><a href="/articles/{{ a.slug }}/">{{ a.name }}</a></li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    </div>
+                    
                     <div class="span3">
                         <div class="widget">
                             <h5>Последние работы</h5>
@@ -165,6 +158,19 @@
                                 {% endfor %}
                             </ul>
                         </div>
+                    </div>
+                    
+                    <div class="span3">
+                        {% comment %}
+                        <div class="widget">
+                            <h5>Последние статьи</h5>
+                            <ul class="regular">
+                                {% for a in articles %}
+                                    <li><a href="/articles/{{ a.slug }}/">{{ a.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endcomment %}
                     </div>
                     
                     <div class="span3">

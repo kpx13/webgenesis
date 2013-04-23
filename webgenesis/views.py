@@ -82,6 +82,7 @@ def other_page(request, page_name):
 
 def contacts_page(request):
     c = get_common_context(request)
+    c['page'] = Page.get_by_slug('contacts')
     return render_to_response('contacts.html', c, context_instance=RequestContext(request))
 
 def umi_page(request):
