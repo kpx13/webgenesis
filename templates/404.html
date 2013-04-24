@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Создание и продвижение сайтов на заказ</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!-- styles -->
+        <link href="/static/css/bootstrap.css" rel="stylesheet">
+        <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="/static/css/docs.css" rel="stylesheet">
+        <link href="/static/css/prettyPhoto.css" rel="stylesheet">
+        <link href="/static/js/google-code-prettify/prettify.css" rel="stylesheet">
+        <link href="/static/css/flexslider.css" rel="stylesheet">
+        <link href="/static/css/sequence.css" rel="stylesheet">
+        <link href="/static/css/style.css" rel="stylesheet">
+        <link href="/static/color/default.css" rel="stylesheet">
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+        <script src="/static/js/jquery-1.8.2.min.js"></script>
+        <script src="/static/js/jquery.easing.1.3.js"></script>
+        <script src="/static/js/google-code-prettify/prettify.js"></script>
+        <script src="/static/js/modernizr.js"></script>
+        <script src="/static/js/bootstrap.js"></script>
+<!--         <script src="/static/js/jquery.elastislide.js"></script> -->
+        <script src="/static/js/jquery.flexslider.js"></script>
+        <script src="/static/js/sequence/sequence.jquery-min.js"></script>
+        <script src="/static/js/sequence/setting.js"></script>
+        <script src="/static/js/jquery.tweet.js"></script>
+        <script src="/static/js/jquery.prettyPhoto.js"></script>
+        <script src="/static/js/application.js"></script>
+        <script src="/static/js/jquery.flexslider.js"></script>
+    
+        <!-- fav and touch icons -->
+        <link rel="shortcut icon" href="/static/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/static/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/static/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/static/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="/static/ico/apple-touch-icon-57-precomposed.png">
+        
+        
+        {% block head %}
+        {% endblock %}
+        
+    </head>
+    <body>
+        
+        <header>
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <!-- logo -->
+                        <a class="brand logo" href="/">
+                            <img src="/static/img/logo.png" alt="" />
+                        </a>
+                        <!-- end logo -->
+                        <!-- top menu -->
+                        <div class="navigation">
+                            <nav>
+                            <ul class="nav topnav">
+                                <li class="dropdown {% if 'home' in request_url %} active {% endif %}">
+                                    <a href="/">Главная</a>
+                                </li>
+                                <li class="dropdown {% if 'services' in request_url %} active {% endif %}">
+                                    <a href="/services/">Услуги</a>
+                                </li>
+                                <li class="dropdown {% if 'portfolio' in request_url %} active {% endif %}">
+                                    <a href="/portfolio/">Портфолио</a>
+                                </li>
+                                <li class="dropdown {% if 'order' in request_url %} active {% endif %}">
+                                    <a href="/order/">Заказ</a>
+                                </li>
+                                <li class="dropdown {% if 'team' in request_url %} active {% endif %}">
+                                    <a href="/team/">Команда</a>
+                                </li>
+                                <li class="dropdown {% if 'about' in request_url %} active {% endif %}">
+                                    <a href="/contacts/">Контакты</a>
+                                </li>
+                            </ul>
+                            </nav>
+                        </div>
+                        <!-- end menu -->
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+            <section id="subintro">
+                <div class="jumbotron subhead" id="overview">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span12">
+                                <div class="centered">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+        <section id="maincontent">
+            <div class="container">
+            
+<h2>404.</h2>
+<p>Страница не найдена</p>
+        
+            </div>
+        </section>
+        <!-- Footer
+        ================================================== -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="span3">
+                        
+                    </div>
+                    
+                    <div class="span3">
+                      
+                    </div>
+                    
+                    <div class="span3">
+                       
+                    </div>
+                    
+                    <div class="span3">
+                        <div class="widget">
+                            <h5>Контакты</h5>
+                            <address>
+                                <strong>
+                                        Телефон: <b>8 (926) 836 12 36</b>
+<br />
+                                        email: <b>annkpx@gmail.com</b>
+
+<br />
+                                        skype: <b>ann_kpx</b>
+
+<br />
+                                </strong>
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="verybottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="span6">
+                            <p>
+                                &copy; WebGenesis 2013 - Все права соблюдены
+                            </p>
+                        </div>
+                        <div class="span6">
+                            <p class="pull-right">
+                                Сделано в студии <a href="http://webgenesis.ru">WebGenesis</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
+    
