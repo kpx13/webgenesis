@@ -41,6 +41,7 @@
 {% endblock %}
 
 {% block content %}
+    {% comment %}
     <div class="row">
         <div class="span12">
             <ul class="filter">
@@ -51,6 +52,7 @@
             </ul>
         </div>
     </div>
+    {% endcomment %}
 
     <div class="row">
         <ul class="portfolio-area da-thumbs">
@@ -59,12 +61,12 @@
                 <div class="span4">
                     <div class="thumbnail">
                         <div class="image-wrapp">
-                            <img src="/media/{{ w.image }}" alt="{{ w.title }}" title="" />
-                            <article class="da-animate da-slideFromRight" style="display: block;">
-                            <h4>{{ w.title }}</h4>
-<!--                             <a href='http://{{ w.href }}/' target='_blank'> Перейти на сайт {{ w.href }} &raquo;</a><br /> -->
-                            <a href='/portfolio/{{ w.slug }}' class='btn btn-link'>Подробнее &raquo;</a>
-                            </article>
+                            <a href='/portfolio/{{ w.slug }}'>
+                                <img src="/media/{{ w.image.all.0.image }}" alt="{{ w.title }}" title="" />
+                                <article class="da-animate da-slideFromRight" style="display: block;">
+                                <h4>{{ w.title }}</h4>
+                                </article>
+                            </a>
                         </div>
                     </div>
                 </div>

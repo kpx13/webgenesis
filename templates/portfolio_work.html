@@ -51,15 +51,9 @@
                     <!-- start flexslider -->
                     <div class="flexslider">
                         <ul class="slides">
-                            <li>
-                                <img src='/media/{{ curr_work.image }}' />
-                            </li>
-                            <li>
-                                <img src='/media/{{ curr_work.image }}' />
-                            </li>
-                            <li>
-                                <img src='/media/{{ curr_work.image }}' />
-                            </li>
+                            {% for i in curr_work.image.all  %}
+                            <li><img src='/media/{{ i.image }}' /></li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <!-- end flexslider -->
@@ -69,10 +63,12 @@
                     <div class="project-widget">
                         <h4><i class="icon-48 icon-beaker"></i></h4>
                         <ul class="project-detail">
-                            <li><label>Название :</label> {{ curr_work.title }}</li>
-                            <li><label>Категории :</label> {% for t in curr_work.tags.all %} {{t}}  {% endfor %} </li>
-                            <li><label>Ссылка :</label> <a href='http://{{ w.href }}/' target='_blank'> {{ curr_work.href }} &raquo;</a></li>
-                            <li><label></label>Март 2013г.</li>
+                            <li><label>Название:</label> {{ curr_work.title }}</li>
+                            <li><label>Категории:</label> {% for t in curr_work.tags.all %} {{t}}  {% endfor %} </li>
+                            {% if curr_work.href %}
+                            <li><label>Ссылка:</label> <a href='http://{{ curr_work.href }}/' target='_blank'> {{ curr_work.href }} &raquo;</a></li>
+                            {% endif %}
+                            <li><label>Проект сдан:</label> {{ curr_work.date }}</li>
                         </ul>
                         <p>{{ curr_work.desc }}</p>
                     </div>

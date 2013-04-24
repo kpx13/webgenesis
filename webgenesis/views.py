@@ -18,8 +18,8 @@ from slideshow.models import Slider
 def get_common_context(request):
     c = {}
     c['request_url'] = request.path
-    c['works'] = Work.get_recent(4)
-    c['articles'] = Article.get_recent(4)
+    c['works_r'] = Work.get_recent(4)
+    c['articles_r'] = Article.get_recent(4)
     c.update(csrf(request))
     return c
 

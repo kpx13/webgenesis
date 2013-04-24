@@ -27,11 +27,11 @@ class WorkTaggedItem(TaggedItem):
 class Work(models.Model):
     title = models.CharField(max_length=256, verbose_name=u'заголовок')
     href = models.CharField(max_length=256, blank=True, verbose_name=u'ссылка')
-    image = models.FileField(upload_to= 'portfolio', blank=True, max_length=256, verbose_name=u'картинка')
     desc = models.TextField(blank=True, verbose_name=u'описание')
     order = models.SmallIntegerField(blank=True, default=0, verbose_name=u'порядок')
     slug = models.SlugField(verbose_name=u'slug', unique=True, blank=True)
     tags = TaggableManager(through=WorkTaggedItem, blank=True)
+    date = models.DateField(verbose_name=u'дата выполнения проекта', blank=True)
     
     class Meta:
         verbose_name = u'работа'
@@ -63,4 +63,24 @@ class Work(models.Model):
             return []
         else:
             return list(Work.objects.filter(tags__slug__in=[tag]))
+        
+class Image(models.Model):
+    work = models.ForeignKey(Work, verbose_name=u'работа', related_name='image')
+    image = models.ImageField(upload_to='uploads/items', max_length=256, blank=True, verbose_name=u'изображение')
+    order = models.IntegerField(null=True, blank=True, default=100, verbose_name=u'порядок сортировки')
+
+    @staticmethod
+    def get(id_):
+        try:
+            return Image.objects.get(id=id_)
+        except:
+            return None
+    
+    class Meta:
+        verbose_name = u'изображение'
+        verbose_name_plural = u'изображения'
+        ordering=['order']
+        
+    def __unicode__(self):
+        return str(self.id) 
         
