@@ -157,7 +157,7 @@ CKEDITOR_CONFIGS = {
     }
 }
 
-
+ROOT_FOR_ATTACES = os.path.join(MEDIA_ROOT, 'briefs') 
 CKEDITOR_UPLOAD_PATH = os.path.join(MEDIA_ROOT, 'uploads')
 CKEDITOR_MEDIA_PREFIX = '/media/ckeditor/'
 EMAIL_HOST = 'smtp.gmail.com'
