@@ -53,11 +53,11 @@
                 <div class="span12">
                     <h3>Последние работы</h3>
                 </div>
-                {% for w in works %}
+                {% for w in works_r %}
                 <div class="span3">
                     <div class="post-image">
                         <a href="/portfolio/{{ w.slug }}">
-                        <img src="/media/{{ w.image }}" alt="" />
+                        <img src="/media/{{ w.image.all.0.image }}" alt="" />
                         </a>
                     </div>
                     <!-- end .entry-meta -->

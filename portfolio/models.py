@@ -9,12 +9,23 @@ import pytils
 class WorkTag(Tag):
     class Meta:
         proxy = True
-
+    
+    def slug_(self):
+        return pytils.translit.slugify(self.name)
+    
     def slugify(self, tag, i=None):
         slug = tag.lower().replace(' ', '-')
         if i is not None:
             slug += '-%d' % i
-        return slug
+        return pytils.translit.slugify(slug)
+    
+    @staticmethod
+    def get_work_tags():
+        list = []
+        for wt in WorkTag.objects.all():
+            if len(Work.objects.filter(tags__slug__in=[wt.slug])) > 0:
+                list.append(wt)
+        return list
 
 class WorkTaggedItem(TaggedItem):
     class Meta:

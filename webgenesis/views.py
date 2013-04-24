@@ -11,7 +11,7 @@ import pytils
 
 from request.forms import RequestForm
 from pages.models import Page
-from portfolio.models import Work
+from portfolio.models import Work, WorkTag
 from blog.models import Article
 from slideshow.models import Slider
 
@@ -36,6 +36,7 @@ def portfolio_page(request, curr_work=None):
         c['curr_work'] = Work.get_by_slug(curr_work)
         return render_to_response('portfolio_work.html', c, context_instance=RequestContext(request))
     else:
+        c['tags'] = WorkTag.get_work_tags()
         c['works'] = Work.objects.all()
         return render_to_response('portfolio.html', c, context_instance=RequestContext(request))
 

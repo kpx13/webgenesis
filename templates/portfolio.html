@@ -1,26 +1,14 @@
 {% extends 'base.html' %}
-
+{% load thumbnail %}
 {% block title %}Создание и продвижение сайтов на заказ | Портфолио{% endblock %}
 
 {% block head %}
-    <script src="/static/js/jquery-1.8.2.min.js"></script>
-    <script src="/static/js/jquery.easing.1.3.js"></script>
-    <script src="/static/js/google-code-prettify/prettify.js"></script>
-    <script src="/static/js/modernizr.js"></script>
-    <script src="/static/js/bootstrap.js"></script>
-    <script src="/static/js/jquery.elastislide.js"></script>
-    <script src="/static/js/jquery.flexslider.js"></script>
-    <script src="/static/js/jquery.tweet.js"></script>
-    <script src="/static/js/application.js"></script>
-    <script src="/static/js/jquery.prettyPhoto.js"></script>
-    <!-- Portfolio -->
-    <script src="/static/js/portfolio/jquery.quicksand.js"></script>
-    <script src="/static/js/portfolio/setting.js"></script>
-    <!-- Portfolio hover -->
-    <script src="/static/js/hover/jquery-hover-effect.js"></script>
-    <script src="/static/js/hover/setting.js"></script>
-    <script src="/static/js/custom.js"></script>
+    <link rel="stylesheet" href="/static/portfolio/css/style.css" type="text/css"/>
 
+    <!-- JS JQuery in the head you can use ajax if you want ================ -->
+    <script src="/static/portfolio/js/jquery.min.js"></script>
+    <!-- Add to Head after Style sheet http://modernizr.com/docs/#installing  ================ -->
+    <script src="/static/portfolio/js/modernizr.custom.87724.js"></script><!-- js multiple backgrounds svg background size -->
 {% endblock %}
 
 {% block slider %}
@@ -40,38 +28,45 @@
     </section>
 {% endblock %}
 
-{% block content %}
-    {% comment %}
-    <div class="row">
-        <div class="span12">
-            <ul class="filter">
-                <li class="all active"><a href="#" class="btn btn-color">Все работы</a></li>
-                <li class="eliz"><a href="#" class="btn btn-color">Дизайн от Елизаветы</a></li>
-                <li class="dmitr"><a href="#" class="btn btn-color">Дизайн от Дмитрия</a></li>
-                <li class="templ"><a href="#" class="btn btn-color">Шаблонные и комбинированные сайты</a></li>
+{% block content %}  
+    
+    <div class="container clearfix" id="main-content">
+        <div class="row-fluid">
+            <div class="filter-box clearfix"><span id="filter">Filter<i class="icon-sort"></i></span>
+                <ul class='sort' id="option">
+                    <li><a class="active" href="#" data-filter="*">Все</a></li>
+                    {% for t in tags %}
+                        <li><a href="#" data-filter=".{{ t.slug }}">{{ t.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <!--gallery with lightbox add class lightbox to gallery class-->
+            <ul class="gallery lightbox four_col clearfix">
+                {% for w in works %}
+                    <li class="{% for t in w.tags.all %} {{ t.slug }}  {% endfor %} "> 
+                        <a class="hover" href="/portfolio/{{ w.slug }}">
+                        {% thumbnail w.image.all.0.image "x300" as im %}
+                            <img src="{{ im.url }}" alt="" />
+                        {% endthumbnail %}
+                        </a>
+                    </li>
+                {% endfor %}
+               
             </ul>
         </div>
+        <!--close row-fluid--> 
+        
     </div>
-    {% endcomment %}
+    <!--close .container role="main-content" --> 
 
-    <div class="row">
-        <ul class="portfolio-area da-thumbs">
-            {% for w in works %}
-            <li class="portfolio-item2" data-id="id-0" data-type="{{ w.type }}">
-                <div class="span4">
-                    <div class="thumbnail">
-                        <div class="image-wrapp">
-                            <a href='/portfolio/{{ w.slug }}'>
-                                <img src="/media/{{ w.image.all.0.image }}" alt="{{ w.title }}" title="" />
-                                <article class="da-animate da-slideFromRight" style="display: block;">
-                                <h4>{{ w.title }}</h4>
-                                </article>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-    </div>
+    
+    <!-- scripts on this page ================ --> 
+<script src='/static/portfolio/js/jquery.isotope.min.js'></script><!--filter and masonry script--> 
+<script src='/static/portfolio/js/isotope_custom.js'></script><!--custom settings--> 
+<script src="/static/portfolio/js/fancybox/source/jquery.fancybox.pack.js"></script><!--main fancybox--> 
+<script src="/static/portfolio/js/fancybox/source/helpers/jquery.fancybox-media.js"></script><!--fancybox media--> 
+<script src="/static/portfolio/js/fancybox/source/helpers/jquery.fancybox-buttons.js"></script><!--fancybox buttons--> 
+<script src="/static/portfolio/js/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script><!--fancybox thumbs--> 
+<script src="/static/portfolio/js/fancybox_init.js"></script><!--fancybox load--> 
 {% endblock %}
