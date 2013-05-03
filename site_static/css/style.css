@@ -106,7 +106,7 @@ header .navbar .brand.logo {
 	color:#fff;	
 }
 .navbar ul.topnav {
-	float:right;
+ 	float:right; 
 }
 
 .navbar .nav > li > a {

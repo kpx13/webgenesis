@@ -53,13 +53,15 @@
                 <div class="navbar-inner">
                     <div class="container">
                         <!-- logo -->
-                        <a class="brand logo" href="/">
-                            <img src="/static/img/logo.png" alt="" />
-                        </a>
+                        
                         <!-- end logo -->
                         <!-- top menu -->
                         <div class="navigation">
-                            <nav>
+                            <a class="brand logo" href="/" style='padding: 0px !important; width: 40%'>
+                                <img src="/static/img/logo.png" alt="" />
+                            </a>
+                            <nav style='width: 58%; float: right;'>
+                            
                             <ul class="nav topnav">
                                 <li class="dropdown {% if 'home' in request_url %} active {% endif %}">
                                     <a href="/">Главная</a>
@@ -70,11 +72,11 @@
                                 <li class="dropdown {% if 'portfolio' in request_url %} active {% endif %}">
                                     <a href="/portfolio/">Портфолио</a>
                                 </li>
-                                {% comment %}
+                                <!--
                                 <li class="dropdown {% if 'articles' in request_url %} active {% endif %}">
                                     <a href="/articles/">Статьи</a>
                                 </li>
-                                {% endcomment %}
+                             -->
                                 <li class="dropdown {% if 'order' in request_url %} active {% endif %}">
                                     <a href="/order/">Заказ</a>
                                 </li>
@@ -85,6 +87,7 @@
                                     <a href="/contacts/">Контакты</a>
                                 </li>
                             </ul>
+                            <div style='clear: both'></div>
                             </nav>
                         </div>
                         <!-- end menu -->
@@ -212,7 +215,8 @@
     </body>
 </html>
                 
-                
+
+{% if not is_debug %}
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
 (function (d, w, c) {
@@ -237,11 +241,10 @@
 <noscript><div><img src="//mc.yandex.ru/watch/17524018" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-{% comment %}
 <!-- BEGIN JIVOSITE CODE {literal} -->
 <script type='text/javascript'>
 (function(){ var widget_id = '49041';
 var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
 <!-- {/literal} END JIVOSITE CODE -->
-{% endcomment %}
 
+{% endif %}

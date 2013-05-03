@@ -20,6 +20,7 @@ def get_common_context(request):
     c['request_url'] = request.path
     c['works_r'] = Work.get_recent(4)
     c['articles_r'] = Article.get_recent(4)
+    c['is_debug'] = settings.DEBUG
     c.update(csrf(request))
     return c
 
@@ -88,6 +89,7 @@ def contacts_page(request):
 
 def umi_page(request):
     c = get_common_context(request)
+    c['page'] = Page.get_by_slug('umi')
     return render_to_response('umi.html', c, context_instance=RequestContext(request))
     
 def handle_file(f):
