@@ -166,7 +166,7 @@ EMAIL_HOST_PASSWORD = 'noreply13'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-REQUEST_SEND_TO = ['annkpx@gmail.com']
+REQUEST_SEND_TO = ['anna@webenesis.ru', 'vasiliy@webgenesis.ru']
 
 try:
     from dev import *
