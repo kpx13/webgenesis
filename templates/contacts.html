@@ -3,7 +3,6 @@
 {% block title %}Создание и продвижение сайтов на заказ | {{ page.title }}{% endblock %}
 
 {% block content %}
-
     <div class="row">
         <div class="span4">
             <aside>
@@ -20,8 +19,10 @@
                     </li>
                     <li>
                         <label><strong>Часы работы: </strong></label>
-                        <p>ПН-ВС 12:00-24:00</p>
+                        <p>ПН-ВС 11:00-21:00</p>
                     </li>
+                    
+                    <img src='/static/img/city.jpg' /><br />
                 </ul>
                 
             </div>
@@ -32,30 +33,32 @@
             <div>
                 {{ page.content|safe }}
             </div>
+            
             {% comment %}
-            <hr />
-            <form action="#" method="post" class="contact-form" name="comment-form">
-                <div class="row">
-                    <div class="span3">
-                        <label>Name <span>*</span></label>
-                        <input type="text" class="input-block-level" placeholder="Your name" />
+                <hr />
+                <form action="#" method="post" class="contact-form" name="comment-form">
+                    <div class="row">
+                        <div class="span3">
+                            <label>Name <span>*</span></label>
+                            <input type="text" class="input-block-level" placeholder="Your name" />
+                        </div>
+                        <div class="span3">
+                            <label>Email <span>*</span></label>
+                            <input type="text" class="input-block-level" placeholder="Your email" />
+                        </div>
+                        <div class="span6">
+                            <label>Website</label>
+                            <input type="text" class="input-block-level" placeholder="Your website" />
+                        </div>
+                        <div class="span8">
+                            <label>Message <span>*</span></label>
+                            <textarea rows="9" class="input-block-level" placeholder="Your message"></textarea>
+                            <button class="btn btn-small btn-success" type="submit">Send a message</button>
+                        </div>
                     </div>
-                    <div class="span3">
-                        <label>Email <span>*</span></label>
-                        <input type="text" class="input-block-level" placeholder="Your email" />
-                    </div>
-                    <div class="span6">
-                        <label>Website</label>
-                        <input type="text" class="input-block-level" placeholder="Your website" />
-                    </div>
-                    <div class="span8">
-                        <label>Message <span>*</span></label>
-                        <textarea rows="9" class="input-block-level" placeholder="Your message"></textarea>
-                        <button class="btn btn-small btn-success" type="submit">Send a message</button>
-                    </div>
-                </div>
-            </form>
+                </form>
             {% endcomment %}
+            
         </div>
     </div>
 

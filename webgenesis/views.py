@@ -82,10 +82,20 @@ def other_page(request, page_name):
     except:
         raise Http404
 
+
+def about_page(request):
+    c = get_common_context(request)
+    c['page'] = Page.get_by_slug('about')
+    return render_to_response('about.html', c, context_instance=RequestContext(request))
+
 def contacts_page(request):
     c = get_common_context(request)
     c['page'] = Page.get_by_slug('contacts')
     return render_to_response('contacts.html', c, context_instance=RequestContext(request))
+
+def services_page(request):
+    c = get_common_context(request)
+    return render_to_response('services.html', c, context_instance=RequestContext(request))
 
 def umi_page(request):
     c = get_common_context(request)

@@ -4,11 +4,8 @@
 
 {% block head %}
     <link rel="stylesheet" href="/static/portfolio/css/style.css" type="text/css"/>
-
-    <!-- JS JQuery in the head you can use ajax if you want ================ -->
-    <script src="/static/portfolio/js/jquery.min.js"></script>
-    <!-- Add to Head after Style sheet http://modernizr.com/docs/#installing  ================ -->
-    <script src="/static/portfolio/js/modernizr.custom.87724.js"></script><!-- js multiple backgrounds svg background size -->
+<!--     <script src="/static/portfolio/js/jquery.min.js"></script> -->
+    <script src="/static/portfolio/js/modernizr.custom.87724.js"></script>
 {% endblock %}
 
 {% block slider %}
@@ -42,11 +39,11 @@
             </div>
             
             <!--gallery with lightbox add class lightbox to gallery class-->
-            <ul class="gallery lightbox four_col clearfix">
+            <ul class="gallery lightbox three_col clearfix">
                 {% for w in works %}
                     <li class="{% for t in w.tags.all %} {{ t.slug }}  {% endfor %} "> 
                         <a class="hover" href="/portfolio/{{ w.slug }}">
-                        {% thumbnail w.image.all.0.image "x300" as im %}
+                        {% thumbnail w.image.all.0.image "x500" as im %}
                             <img src="{{ im.url }}" alt="" />
                         {% endthumbnail %}
                         </a>

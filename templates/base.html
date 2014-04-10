@@ -26,14 +26,14 @@
         <script src="/static/js/google-code-prettify/prettify.js"></script>
         <script src="/static/js/modernizr.js"></script>
         <script src="/static/js/bootstrap.js"></script>
-<!--         <script src="/static/js/jquery.elastislide.js"></script> -->
-        <script src="/static/js/jquery.flexslider.js"></script>
-        <script src="/static/js/sequence/sequence.jquery-min.js"></script>
-        <script src="/static/js/sequence/setting.js"></script>
+        <script src="/static/js/jquery.elastislide.js"></script>
+<!--         <script src="/static/js/sequence/sequence.jquery-min.js"></script> -->
+<!--         <script src="/static/js/sequence/setting.js"></script> -->
         <script src="/static/js/jquery.tweet.js"></script>
         <script src="/static/js/jquery.prettyPhoto.js"></script>
         <script src="/static/js/application.js"></script>
         <script src="/static/js/jquery.flexslider.js"></script>
+        <script src="/static/js/custom.js"></script>
     
         <!-- fav and touch icons -->
         <link rel="shortcut icon" href="/static/ico/favicon.ico">
@@ -47,16 +47,12 @@
         {% endblock %}
         
     </head>
-    <body>
+    <body data-spy="scroll" data-target=".bs-docs-sidebar">
         
         <header>
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
                     <div class="container">
-                        <!-- logo -->
-                        
-                        <!-- end logo -->
-                        <!-- top menu -->
                         <div class="navigation">
                             <a class="brand logo" href="/" style='padding: 0px !important; width: 40%'>
                                 <img src="/static/img/logo.png" alt="" />
@@ -67,74 +63,108 @@
                                 <li class="dropdown {% if 'home' in request_url %} active {% endif %}">
                                     <a href="/">Главная</a>
                                 </li>
+                                
                                 <li class="dropdown {% if 'services' in request_url %} active {% endif %}">
-                                    <a href="/services/">Услуги</a>
+                                    <a href="/services/">Услуги и Цены</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/services/#logitipy">Логотипы</a></li>
+                                        <li><a href="/services/#firstil">Фирменный стиль</a></li>
+                                        <li><a href="/services/#sites">Разработка сайтов</a></li>
+                                        <li><a href="/services/#poddepgka">Поддержка и сопровождение</a></li>
+                                        <li><a href="/services/#prodvigenie">Продвижение</a></li>
+                                        <li><a href="/services/#souchreditelstvo">Соучредительство</a></li>
+                                    </ul>
                                 </li>
                                 <li class="dropdown {% if 'portfolio' in request_url %} active {% endif %}">
                                     <a href="/portfolio/">Портфолио</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Сайты-Визитки</a></li>
+                                        <li><a href="#">Лендинги</a></li>
+                                        <li><a href="#">Интернет-Магазины</a></li>
+                                        <li><a href="#">Логотипы</a></li>
+                                        <li><a href="#">Другие проекты</a></li>
+                                    </ul>
                                 </li>
-                                <!--
-                                <li class="dropdown {% if 'articles' in request_url %} active {% endif %}">
-                                    <a href="/">Статьи</a>
-                                </li>
-                             -->
                                 <li class="dropdown {% if 'order' in request_url %} active {% endif %}">
-                                    <a href="/order/">Заказ</a>
+                                    <a href="/order/">Как заказать</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">О создании сайтов</a></li>
+                                        <li><a href="/terminyi/">Термины</a></li>
+                                        <li><a href="#">Порядок работы</a></li>
+                                        <li><a href="#">Демо-версия админки</a></li>
+                                        <li><a href="#">Заказать</a></li>
+                                    </ul>
                                 </li>
                                 
-                            <!--    <li class="dropdown {% if 'team' in request_url %} active {% endif %}">
-	                                    <a href="/team/">Команда</a>
-                                </li> -->
                                 <li class="dropdown {% if 'about' in request_url %} active {% endif %}">
+                                    <a href="/about/">О компании</a>
+                                </li>
+                                
+                                <li class="dropdown {% if 'contacts' in request_url %} active {% endif %}">
                                     <a href="/contacts/">Контакты</a>
                                 </li>
                             </ul>
                             <div style='clear: both'></div>
                             </nav>
                         </div>
-                        <!-- end menu -->
                     </div>
                 </div>
             </div>
         </header>
         
-        {% block slider %}
-            <section id="subintro">
-                <div class="jumbotron subhead" id="overview">
-                    <div class="container">
-                        <div class="row">
-                            <div class="span12">
-                                <div class="centered">
-                                    <h3>{{ page.subintro_title }}</h3>
-                                    <p>{{ page.subintro_text }}</p>
+        {% block content_ %}
+            {% block slider %}
+                <section id="subintro">
+                    <div class="jumbotron subhead" id="overview">
+                        <div class="container">
+                            <div class="row">
+                                <div class="span12">
+                                    <div class="centered">
+                                        <h3>{{ page.subintro_title }}</h3>
+                                        <p>{{ page.subintro_text }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </section>
+            {% endblock %}
+            
+            {% block breadcrumb %}
+                <section id="breadcrumb">
+                    <div class="container">
+                        <div class="row">
+                            <div class="span12">
+                                <ul class="breadcrumb notop">
+                                    <li><a href="/">Главная</a><span class="divider">/</span></li>
+                                    <li class="active">{{ page.title }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            {% endblock %}
+            
+            
+            
+            <section id="maincontent">
+                <div class="container">
+                
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    {% block content %}
+                    {% endblock %}
+            
                 </div>
             </section>
         {% endblock %}
-        
-        {% block breadcrumb %}
-        {% endblock %}
-        
-        <section id="maincontent">
-            <div class="container">
-            
-
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }}">
-                          {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                
-                {% block content %}
-                {% endblock %}
-        
-            </div>
-        </section>
         <!-- Footer
         ================================================== -->
         <footer class="footer">

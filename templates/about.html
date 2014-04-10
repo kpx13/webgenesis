@@ -1,0 +1,44 @@
+{% extends 'base.html' %}   
+
+{% block title %}Создание и продвижение сайтов на заказ | {{ page.title }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="span4">
+            <aside>
+            <div class="widget">
+                <h4>Свяжитесь с нами:</h4>
+                <ul>
+                    <li>
+                        <label><strong>Телефон: </strong></label>
+                        <p>+7 (926) 836 12 36</p>
+                    </li>
+                    <li>
+                        <label><strong>Email: </strong></label>
+                        <a href='mailto: anna@webgenesis.ru' target='_blank'>anna@webgenesis.ru</a>
+                    </li>
+                    <li>
+                        <label><strong>Часы работы: </strong></label>
+                        <p>ПН-ВС 11:00-21:00</p>
+                    </li>
+                    <li>
+                        <label><strong>Адрес: </strong></label>
+                        <p>г. Москва, ММДЦ “Москва-Сити”, Башня “Федерация Восток”, 24 этаж.</p>
+                        <img src='/static/img/me.jpg'>
+                    </li>
+                </ul>
+                
+                
+                
+            </div>
+            
+            </aside>
+        </div>
+        <div class="span8">
+            <div>
+                {{ page.content|safe }}
+            
+        </div>
+    </div>
+
+{% endblock %}
