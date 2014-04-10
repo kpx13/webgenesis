@@ -66,6 +66,10 @@ class Work(models.Model):
         
     @staticmethod
     def get_recent(count=3):
+        return list(Work.objects.all().order_by('-date')[:count])
+    
+    @staticmethod
+    def get_best(count=3):
         return list(Work.objects.all()[:count])
     
     @staticmethod

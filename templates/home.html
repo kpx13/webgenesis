@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
+{% block breadcrumb %}
+{% endblock %}
+
 {% block slider %}
     <section id="intro">
         <div class="jumbotron masthead">
@@ -45,8 +48,188 @@
 
 
 {% block content %}
-        {{ page.content|safe }}
         
+        <div class="row">
+            
+            <div class="span4">
+                <div class="well">
+                    <div class="centered">
+                        <i class="icon-circled icon-64 icon-leaf active"></i>
+                        <h4>Логотипы / Фирменный стиль</h4>
+                        <div class="dotted_line">
+                        </div>
+                        <p>
+                            Создание собственного фирменного стиля является очень важным этапом для представления Вашего бизнеса на рынке. По-другому это называется "брендбук", т.е. "книга бренда".<br />
+                            <a href='/services/#firstil'>Подробнее &raquo;</a><br />
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="span4">
+                <div class="well">
+                    <div class="centered">
+                        <i class="icon-circled icon-64 icon-suitcase active"></i>
+                        <h4>Создание сайтов</h4>
+                        <div class="dotted_line">
+                        </div>
+                        <p>
+                            Основной профиль нашей компании - создание сайтов различной сложности под ключ. Разработка происходит на собственном движке, поэтому мы не ограничены возможностями определенной cms. А это значит, что можем реализовать любой необходимый функционал.<br />
+                            <a href='/services/#sites'>О типах сайтов и ценах &raquo;</a><br />
+                            <a href='/portfolio/'>Сайты в портфолио &raquo;</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="span4">
+                <div class="well">
+                    <div class="centered">
+                        <i class="icon-circled icon-64 icon-coffee active"></i>
+                        <h4>Поддержка / Продвижение</h4>
+                        <div class="dotted_line">
+                        </div>
+                        <p>
+                            Поисковое продвижение - это необходимая часть рекламы в интернете. Наиболее оптимизированный сайт появляется выше в выдаче поисковых систем, а значит, более эффективен и приносит больше клиентов.<br />
+                            <a href='/services/#poddepgka'>Подробнее о поддержке и продвижении &raquo;</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="home-posts">
+                <div class="span12">
+                    <h3>Лучшие работы</h3>
+                </div>
+                {% for w in works_b %}
+                <div class="span3">
+                    <div class="post-image">
+                        <a href="/portfolio/{{ w.slug }}">
+                        <img src="/media/{{ w.image.all.0.image }}" alt="" />
+                        </a>
+                    </div>
+                    <!-- end .entry-meta -->
+                    <div>
+                        <a href="/portfolio/{{ w.slug }}">
+                        <h5 class="title">{{ w.title }}</h5>
+                        </a>
+                        <p>{{ w.desc }}</p>
+                        <a href='http://{{ w.href }}/' target='_blank'> Перейти на сайт {{ w.href }} &raquo;</a><br />
+                        <a href='/portfolio/{{ w.slug }}' class='btn btn-color btn-small'>Подробнее &raquo;</a>
+                    </div>
+                    <!-- end .entry-body -->
+                    <div class="clear">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class='span12'>
+                <h1>Наши тарифы на создание сайтов:</h1>
+            </div>
+            
+            <div class="span4">
+                <div class="priceBox">
+                    <h4 class="light">Простой</h4>
+                    <hr>
+                    <span class="emphasis">от 15 000 руб. <em>за проект</em></span>
+                    <hr>
+                    <span><b>Сайт-визитка</b></span>
+<hr>
+                    <span>Дизайн на основе шаблона с доработками под Ваш фирменный стиль</span>
+                    <hr>
+                    <span>Собственный движок на django</span>
+      
+                    <hr>
+                    <span>Домен на год</span>
+<hr>
+                    <span>Почта, Веб-аналитика</span>
+<hr>
+                    <span>Размещение на сервере</span>
+                    <hr>
+                    <span class="emphasis-2"><a class="btn btn-success" href="/services/#sites">Подробнее</a></span>
+                </div>
+            </div>
+            <div class="span4">
+                <div class="priceBox special">
+                    <h4 class="light">Стандартный</h4>
+                   <hr>
+                    <span class="emphasis">от 30 000 руб. <em>за проект</em></span>
+                    <hr>
+                    <span><b>Сайт-визитка + Каталог + Дополнительные функции</b></span>
+                    <hr>
+                    <span>Собственный движок на django</span>
+                    <hr>
+                    <span>Уникальный дизайн</span>
+                    <hr>
+                    <span>Домен на год</span>
+<hr>
+                    <span>Почта, Веб-аналитика</span>
+<hr>
+                    <span>Размещение на сервере</span>
+<hr>
+                    <span>Скидка на продвижение и рекламу</span>
+                    <hr>
+                    <span class="emphasis-2"><a class="btn btn-success" href="/services/#sites">Подробнее</a></span>
+                </div>
+            </div>
+            <div class="span4">
+                <div class="priceBox">
+                    <h4 class="light">Интернет-Магазин или Стартап</h4>
+                    <hr>
+                    <span class="emphasis">от 45 000 руб. <em>за проект</em></span>
+                    <hr>
+                    <span><b>Интернет-магазин или дргуой проект с регистрацией пользователей</b></span>
+                     <hr>
+                    <span>Собственный движок на django</span>
+                    <hr>
+                    <span>Уникальный дизайн</span>
+                    <hr>
+                    <span>Домен на год</span>
+<hr>
+                    <span>Почта, Веб-аналитика</span>
+<hr>
+                    <span>Размещение на сервере</span>
+<hr>
+                    <span>Скидка на услуги по дизайну</span>
+<hr>
+                    <span>Скидка на продвижение и рекламу</span>
+                    <hr>
+                    <span class="emphasis-2"><a class="btn btn-success" href="/services/#sites">Подробнее</a></span>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="span12">
+                <div class="tagline centered">
+                    <div class="row">
+                        <div class="span12">
+                            <div class="tagline_text">
+                                <h2>Как узнать стоимость работ и сроки?</h2>
+                                <p>
+                                    Для того, чтобы мы могли точно определить стоимость выполняемых работ и сроки, Вам необходимо заполнить бриф <br /> и/или проконсультироваться с менеджером про проектам Марией, она подробно расскажет о формате работы.
+                                </p>
+                            </div>
+                            <div class="btn-toolbar cta">
+<a class="btn btn-large btn-color" href="/media/brief.doc" target='_blank'>
+                                <i class="icon-file icon-white"></i> Бриф </a>
+<a class="btn btn-large btn-color" href="/media/dogovor.docx">
+                                <i class="icon-file icon-white"></i> Договор </a>
+                                <a class="btn btn-large btn-inverse" href="/order/#zakaz" target='_blank'>
+                                <i class="icon-shopping-cart icon-white"></i> Сделать заказ </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end tagline -->
+            </div>
+        </div>
         
         <div class="row">
             <div class="home-posts">

@@ -19,6 +19,7 @@ def get_common_context(request):
     c = {}
     c['request_url'] = request.path
     c['works_r'] = Work.get_recent(4)
+    c['works_b'] = Work.get_best(4)
     c['articles_r'] = Article.get_recent(4)
     c['is_debug'] = settings.DEBUG
     c.update(csrf(request))

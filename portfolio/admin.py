@@ -8,7 +8,7 @@ class ImageInline(admin.StackedInline):
     
 class WorkAdmin(admin.ModelAdmin):
     inlines = [ ImageInline, ]
-    list_display = ('slug', 'title', 'href', 'order')
+    list_display = ('slug', 'title', 'href', 'order', 'date')
 
 
 admin.site.register(Work, WorkAdmin)
